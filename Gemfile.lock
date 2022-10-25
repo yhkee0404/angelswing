@@ -66,6 +66,11 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    authlogic (6.4.2)
+      activemodel (>= 5.2, < 7.1)
+      activerecord (>= 5.2, < 7.1)
+      activesupport (>= 5.2, < 7.1)
+      request_store (~> 1.0)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -138,6 +143,8 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
+    request_store (1.5.1)
+      rack (>= 1.4)
     sqlite3 (1.5.3-x86_64-linux)
     thor (1.2.1)
     timeout (0.3.0)
@@ -149,9 +156,11 @@ GEM
     zeitwerk (2.6.1)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
+  authlogic
   bootsnap
   debug
   puma (~> 5.0)
