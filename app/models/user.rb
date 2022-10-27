@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  acts_as_authentic
+  has_secure_password
 
   # Validate email, login, and password as you see fit.
   #
@@ -13,11 +13,14 @@ class User < ApplicationRecord
     },
     length: { maximum: 100 },
     uniqueness: {
-      case_sensitive: false
+      case_sensitive: false,
+      if: :will_save_change_to_email?
     }
 
   validates :password,
+    confirmation: { if: :require_password? },
     length: {
       minimum: 8,
+      if: :require_password?
     }
 end

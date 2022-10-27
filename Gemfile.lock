@@ -66,11 +66,9 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    authlogic (6.4.2)
-      activemodel (>= 5.2, < 7.1)
-      activerecord (>= 5.2, < 7.1)
-      activesupport (>= 5.2, < 7.1)
-      request_store (~> 1.0)
+    api_guard (0.6.0)
+      jwt (~> 2.2)
+    bcrypt (3.1.18)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -80,10 +78,6 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     erubi (1.11.0)
-    ffi (1.15.5)
-    ffi-compiler (1.0.1)
-      ffi (>= 1.0.0)
-      rake
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -91,6 +85,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.2)
       reline (>= 0.3.0)
+    jwt (2.5.0)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -147,10 +142,6 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
-    request_store (1.5.1)
-      rack (>= 1.4)
-    scrypt (3.0.7)
-      ffi-compiler (>= 1.0, < 2.0)
     sqlite3 (1.5.3-x86_64-linux)
     thor (1.2.1)
     timeout (0.3.0)
@@ -162,16 +153,15 @@ GEM
     zeitwerk (2.6.1)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
-  authlogic
+  api_guard
+  bcrypt (~> 3.1.7)
   bootsnap
   debug
   puma (~> 5.0)
   rails (~> 7.0.4)
-  scrypt
   sqlite3 (~> 1.4)
   tzinfo-data
 
