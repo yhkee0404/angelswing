@@ -85,6 +85,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.2)
       reline (>= 0.3.0)
+    jb (0.8.0)
     jwt (2.5.0)
     loofah (2.19.0)
       crass (~> 1.0.2)
@@ -153,6 +154,7 @@ GEM
     zeitwerk (2.6.1)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -160,6 +162,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
+  jb
   puma (~> 5.0)
   rails (~> 7.0.4)
   sqlite3 (~> 1.4)
