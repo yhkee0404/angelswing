@@ -1,5 +1,6 @@
 module Api::V1::ApiGuard
   class RegistrationController < ApiGuard::RegistrationController
+    include ViewPathSync
     before_action :authenticate_resource, only: [:destroy]
     wrap_parameters false
 
@@ -7,7 +8,8 @@ module Api::V1::ApiGuard
       init_resource(sign_up_params)
       if resource.save
         create_token_and_set_header(resource, resource_name)
-        render_success(message: I18n.t('api_guard.registration.signed_up'))
+        @user = resource
+        render __method__
       else
         render_error(422, object: resource)
       end
@@ -19,7 +21,7 @@ module Api::V1::ApiGuard
     end
 
     private
-
+    
     def sign_up_params
       params.permit(:first_name, :last_name, :email, :password, :country)
     end

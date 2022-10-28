@@ -1,5 +1,6 @@
 module Api::V1::ApiGuard
   class AuthenticationController < ApiGuard::AuthenticationController
+    include ViewPathSync
     before_action :find_resource, only: [:create]
     before_action :authenticate_resource, only: [:destroy]
     wrap_parameters false
@@ -7,7 +8,8 @@ module Api::V1::ApiGuard
     def create
       if resource.authenticate(@params[:password])
         create_token_and_set_header(resource, resource_name)
-        render_success(message: I18n.t('api_guard.authentication.signed_in'))
+        @user = resource
+        render __method__
       else
         render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials'))
       end
