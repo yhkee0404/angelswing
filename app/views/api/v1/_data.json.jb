@@ -1,0 +1,11 @@
+data = {
+  id: id,
+  type: type,
+  attributes: attributes
+}
+
+json = {
+  data: data
+}
+
+json
