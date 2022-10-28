@@ -3,4 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  namespace :api do
+    namespace :v1 do
+      api_guard_routes for: 'users', only: [:registration, :authentication]
+      api_guard_scope 'users' do
+        post 'users/signup' => 'api_guard/registration#create'
+        post 'auth/signin' => 'api_guard/authentication#create'
+      end
+    end
+  end
 end
