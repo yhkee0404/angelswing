@@ -1,4 +1,4 @@
-module Api::V1
+module Api::V1::ApiGuard
   class PasswordsController < ApiGuard::PasswordsController
     # before_action :authenticate_resource, only: [:update]
 
