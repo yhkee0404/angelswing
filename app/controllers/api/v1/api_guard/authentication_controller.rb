@@ -11,8 +11,7 @@ module Api::V1::ApiGuard
         @user = resource
         render :show, status: :created
       else
-        # render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials'))
-        render '/message', locals: {message: I18n.t('api_guard.authentication.invalid_login_credentials')}, status: :unprocessable_entity
+        render_error(:unprocessable_entity, message: I18n.t('api_guard.authentication.invalid_login_credentials'))
       end
     end
 
@@ -24,10 +23,9 @@ module Api::V1::ApiGuard
     private
 
     def find_resource
-      @params = params[:auth]
-      self.resource = resource_class.find_by(email: @params[:email].downcase.strip) if @params[:email].present?
-      # render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials')) unless resource
-      render '/message', locals: {message: I18n.t('api_guard.authentication.invalid_login_credentials')}, status: :unprocessable_entity unless resource
+      @params = params[:auth] if params[:auth].present?
+      self.resource = resource_class.find_by(email: @params[:email].downcase.strip) if @params and @params[:email].present?
+      render_error(:unprocessable_entity, message: I18n.t('api_guard.authentication.invalid_login_credentials')) unless resource
     end
   end
 end

@@ -11,8 +11,6 @@ module Api::V1::ApiGuard
         @user = resource
         render :show, status: :created
       else
-        # render_error(422, object: resource)
-        # render '/message', locals: {message: resource.errors.full_messages[0]}, status: :unprocessable_entity
         head :unprocessable_entity
       end
     end
