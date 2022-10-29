@@ -9,7 +9,7 @@ module Api::V1::ApiGuard
       if resource.save
         create_token_and_set_header(resource, resource_name)
         @user = resource
-        render __method__
+        render '/user'
       else
         render_error(422, object: resource)
       end
