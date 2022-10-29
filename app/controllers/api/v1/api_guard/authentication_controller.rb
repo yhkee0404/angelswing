@@ -9,7 +9,7 @@ module Api::V1::ApiGuard
       if resource.authenticate(@params[:password])
         create_token_and_set_header(resource, resource_name)
         @user = resource
-        render __method__
+        render '/user'
       else
         render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials'))
       end
