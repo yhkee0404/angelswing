@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         post 'auth/signin' => 'api_guard/authentication#create'
       end
 
-      resources :contents
+      resources :contents, :except => [:show]
       get 'content' => 'contents#index'
     end
   end
