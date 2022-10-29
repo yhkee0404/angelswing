@@ -1,0 +1,8 @@
+{
+  token: "#{response.headers['Access-Token']} (JWT)",
+  email: user.email,
+  name: "#{user.first_name} #{user.last_name}",
+  country: user.country,
+  createdAt: user.created_at.localtime.strftime(DATETIME_FORMAT_STRING),
+  updatedAt: user.updated_at.localtime.strftime(DATETIME_FORMAT_STRING)
+}

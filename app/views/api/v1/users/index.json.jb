@@ -1,6 +1,5 @@
-@users.map do |user|
-  {
-    id: user.id,
-    url: user_url(user, format: :json)
-  }
-end
+{
+  data: @users.map do |user|
+      (render 'data', user: user)[:data]
+    end
+}
