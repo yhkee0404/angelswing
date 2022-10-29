@@ -1,0 +1,1 @@
+DATETIME_FORMAT_STRING = "%Y-%m-%dT%H:%M%z"
