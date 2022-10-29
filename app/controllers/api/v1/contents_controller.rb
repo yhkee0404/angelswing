@@ -1,6 +1,7 @@
 class Api::V1::ContentsController < ApplicationController
   include ViewPathSync
-  before_action :authenticate_and_set_user, except: [:index]
+  prepend_before_action :authenticate_and_set_user, except: [:index]
+  append_before_action :find_content, only: [:update, :destroy]
   wrap_parameters false
 
   def index
@@ -30,23 +31,30 @@ class Api::V1::ContentsController < ApplicationController
 #   end
 
   def update
-    if @content = current_user.contents.find_by(id: params[:id]) and @content.update(content_params)
+    if @content.update(content_params)
       render :show
     else
-      render '/message', locals: {message: 'Denied'}, status: :forbidden
+      render '/message', locals: {message: @content.errors.full_messages[0]}, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @content = current_user.contents.find_by(id: params[:id]) and @content.destroy
+    if @content.destroy
       render '/message', locals: {message: 'Deleted'}
     else
-      render '/message', locals: {message: 'Denied'}, status: :forbidden
+      render '/message', locals: {message: @content.errors.full_messages[0]}, status: :unprocessable_entity
     end
   end
 
   private
+
   def content_params
     params.permit(:title, :body)
+  end
+
+  # Api::V1::ApiGuard::AuthenticationController#find_resource
+  def find_content
+    @content = current_user.contents.find_by(id: params[:id]) if params[:id].present?
+    render '/message', locals: {message: 'Forbidden'}, status: :forbidden unless @content
   end
 end
