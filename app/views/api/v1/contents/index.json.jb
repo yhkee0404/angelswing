@@ -1,0 +1,6 @@
+@api_v1_contents.map do |api_v1_content|
+  {
+    id: api_v1_content.id,
+    url: api_v1_content_url(api_v1_content, format: :json)
+  }
+end

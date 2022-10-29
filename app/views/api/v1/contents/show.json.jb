@@ -1,0 +1,5 @@
+{
+  id: @api_v1_content.id,
+  created_at: @api_v1_content.created_at,
+  updated_at: @api_v1_content.updated_at
+}
