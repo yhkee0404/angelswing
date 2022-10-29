@@ -1,6 +1,6 @@
 module Api::V1::ApiGuard
   class RegistrationController < ApiGuard::RegistrationController
-    include ViewPathSync
+    include ViewPathSync, LookupUsers
     before_action :authenticate_resource, only: [:destroy]
     wrap_parameters false
 
@@ -9,16 +9,18 @@ module Api::V1::ApiGuard
       if resource.save
         create_token_and_set_header(resource, resource_name)
         @user = resource
-        render '/user'
+        render :show, status: :created
       else
-        render_error(422, object: resource)
+        # render_error(422, object: resource)
+        # render '/message', locals: {message: resource.errors.full_messages[0]}, status: :unprocessable_entity
+        head :unprocessable_entity
       end
     end
 
-    def destroy
-      current_resource.destroy
-      render_success(message: I18n.t('api_guard.registration.account_deleted'))
-    end
+    # def destroy
+    #   current_resource.destroy
+    #   render_success(message: I18n.t('api_guard.registration.account_deleted'))
+    # end
 
     private
     
