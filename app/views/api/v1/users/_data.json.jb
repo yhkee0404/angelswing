@@ -1,0 +1,7 @@
+data = {
+  id: user.id,
+  type: user.model_name.collection,
+  attributes: (render 'attributes', user: user)
+}
+
+render '/data', data: data
