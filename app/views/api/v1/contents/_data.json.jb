@@ -1,0 +1,4 @@
+render '/data',
+  id: content.id,
+  type: content.model_name.element,
+  attributes: (render 'attributes', content: content)
