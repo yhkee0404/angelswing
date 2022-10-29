@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         post 'users/signup' => 'api_guard/registration#create'
         post 'auth/signin' => 'api_guard/authentication#create'
       end
+
+      resources :contents
+      get 'content' => 'contents#index'
     end
   end
 end
