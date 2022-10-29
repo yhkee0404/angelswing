@@ -1,0 +1,6 @@
+{
+  title: content.title,
+  body: content.body,
+  createdAt: content.created_at.localtime.strftime(DATETIME_FORMAT_STRING),
+  updatedAt: content.updated_at.localtime.strftime(DATETIME_FORMAT_STRING)
+}
