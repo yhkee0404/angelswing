@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`docker compose up`
 
-Things you may want to cover:
+or
 
-* Ruby version
+`sudo docker compose up --build`
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/24023224-19b6e2be-a5c1-412a-9d51-391a21c4014f?action=collection%2Ffork&collection-url=entityId%3D24023224-19b6e2be-a5c1-412a-9d51-391a21c4014f%26entityType%3Dcollection%26workspaceId%3Dfa495cbe-fff4-4b5c-beae-f6a16779ff3c)

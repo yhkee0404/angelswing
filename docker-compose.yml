@@ -1,0 +1,16 @@
+# https://docs.docker.com/compose/gettingstarted/
+version: "3.9"
+services:
+  angelswing:
+    image: angelswing-yhkee0404:latest
+    build: .
+    ports:
+      - "3000:3000"
+    # https://stackoverflow.com/questions/46115004/docker-compose-rails-app-is-asking-for-migration-to-be-ran-when-it-was-already-r
+    # https://www.baeldung.com/ops/docker-compose-multiple-commands
+    command:
+      - /bin/sh
+      - -c
+      - |
+        rails db:migrate
+        rails server -b 0.0.0.0
